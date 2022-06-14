@@ -1,43 +1,23 @@
 (ns hackerrank-clojure.plusminus)
 
 (defn count-positive [arr]
-  (let [qty-positive (atom 0)]
-    (doseq [number arr]
-      (if (> number 0)
-        (swap! qty-positive inc)
-        ))
-    @qty-positive)
-  )
+  (count (filter pos? arr)))
+
 (defn count-negative [arr]
-  (let [qty-negative (atom 0)]
-    (doseq [number arr]
-      (if (< number 0)
-        (swap! qty-negative inc)
-        ))
-    @qty-negative)
-  )
+  (count (filter neg? arr)))
+
 (defn count-zero [arr]
-  (let [qty-zero (atom 0)]
-    (doseq [number arr]
-      (if (= number 0)
-        (swap! qty-zero inc)
-        ))
-    @qty-zero)
-  )
+  (count (filter zero? arr)))
 
 (defn generate-qty-map! [arr]
   (let [
-        arr-qty (atom {})
         qty-positive (count-positive arr)
         qty-negative (count-negative arr)
         qty-zero (count-zero arr)
         ]
-    (swap! arr-qty assoc :qty-positive qty-positive)
-    (swap! arr-qty assoc :qty-negative qty-negative)
-    (swap! arr-qty assoc :qty-zero qty-zero)
-    @arr-qty
-    )
-  )
+    [:qty-positive qty-positive
+     :qty-negative qty-negative
+     :qty-zero qty-zero]))
 
 (defn plusMinus [arr]
   (let [
