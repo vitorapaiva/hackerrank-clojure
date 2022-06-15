@@ -9,20 +9,20 @@
 (defn count-zero [arr]
   (count (filter zero? arr)))
 
-(defn generate-qty-map! [arr]
+(defn generate-qty-map [arr]
   (let [
         qty-positive (count-positive arr)
         qty-negative (count-negative arr)
         qty-zero (count-zero arr)
         ]
-    [:qty-positive qty-positive
+    {:qty-positive qty-positive
      :qty-negative qty-negative
-     :qty-zero qty-zero]))
+     :qty-zero     qty-zero} ))
 
 (defn plusMinus [arr]
   (let [
         arr-size (count arr)
-        arr-qty (generate-qty-map! arr)
+        arr-qty (generate-qty-map arr)
         ]
     (println (float (/ (get arr-qty :qty-positive) arr-size)))
     (println (float (/ (get arr-qty :qty-negative) arr-size)))
@@ -30,4 +30,4 @@
     )
   )
 
-(plusMinus [0 -1 2 3 -4 5 6 -7 8 9 0])
+(plusMinus [0 -1 2])
