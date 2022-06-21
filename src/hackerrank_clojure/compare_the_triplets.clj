@@ -8,23 +8,28 @@
 ;  1. INTEGER_ARRAY a
 ;  2. INTEGER_ARRAY b
 ;
-(defn compareTriplets [a b]
-  (let [
-        rateA (atom 0)
-        rateB (atom 0)
-        ]
-    (doseq [number (range (count a))]
-      (let [
-            valA (get a number)
-            valB (get b number)
-            ]
-        (if
-          (not= valA valB)
-          (if (> valA valB)
-            (swap! rateA inc)
-            (swap! rateB inc)
-            )
-          )
-        )
+(defn checkIfA [valA valB]
+  (if
+    (not= valA valB)
+    (if (> valA valB)
+      1
+      0
       )
-    [@rateA @rateB]))
+    0)
+  )
+
+(defn checkIfB [valA valB]
+  (if
+    (not= valA valB)
+    (if (< valA valB)
+      1
+      0
+      )
+    0)
+  )
+
+(defn compareTriplets [a b]
+  [(reduce + (map checkIfA a b))
+   (reduce + (map checkIfB a b))])
+
+(println (compareTriplets [1 2 3] [2 2 1]))
