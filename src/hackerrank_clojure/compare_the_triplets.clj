@@ -1,13 +1,6 @@
+; problem link: https://www.hackerrank.com/challenges/compare-the-triplets?isFullScreen=true
 (ns hackerrank-clojure.compare-the-triplets)
 
-;
-; Complete the 'compareTriplets' function below.
-;
-; The function is expected to return an INTEGER_ARRAY.
-; The function accepts following parameters:
-;  1. INTEGER_ARRAY a
-;  2. INTEGER_ARRAY b
-;
 (defn checkIfA [valA valB]
   (if
     (not= valA valB)

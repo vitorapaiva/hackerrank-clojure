@@ -1,3 +1,4 @@
+;problem link: https://www.hackerrank.com/challenges/plus-minus/problem?isFullScreen=true
 (ns hackerrank-clojure.plusminus)
 
 (defn count-positive [arr]

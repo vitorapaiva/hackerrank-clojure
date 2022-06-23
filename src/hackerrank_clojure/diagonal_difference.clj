@@ -1,3 +1,4 @@
+;problem link: https://www.hackerrank.com/challenges/diagonal-difference/problem
 (ns hackerrank-clojure.diagonal-difference)
 (defn generateLeftDiagonalIndexes [arrSize]
   (for [i (range arrSize)]
